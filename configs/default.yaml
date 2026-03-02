@@ -1,0 +1,27 @@
+llm:
+  default_provider: mock
+  providers:
+    - name: mock
+      model: mock-v1
+      enabled: true
+pipeline:
+  retries: 2
+  mapping_confidence_threshold: 0.08
+  critique_threshold: 0.6
+experiments:
+  strategies:
+    - zero_shot
+    - few_shot
+    - chain_of_thought
+  contexts:
+    - code_only
+    - requirements_only
+    - requirements_plus_code
+  repeats: 3
+  random_seed: 42
+io:
+  tests_filename: test_generated.py
+  traceability_filename: traceability.csv
+  gap_report_filename: gap_report.json
+evaluation:
+  ground_truth_tests: null

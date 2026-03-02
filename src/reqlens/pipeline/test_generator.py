@@ -28,7 +28,11 @@ def generate_tests(
         requirement = req_by_id.get(mapping.requirement_id)
         if requirement is None:
             continue
-        primary_element = code_by_id.get(mapping.code_element_ids[0]) if mapping.code_element_ids else None
+        mapped_element = code_by_id.get(mapping.code_element_ids[0]) if mapping.code_element_ids else None
+        if context_mode == "requirements_only":
+            primary_element = None
+        else:
+            primary_element = mapped_element
 
         body = provider.generate_test(
             requirement=requirement,
