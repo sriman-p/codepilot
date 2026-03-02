@@ -1,6 +1,6 @@
-# ReqLens
+# CodePilot (ReqLens)
 
-ReqLens is a Python CLI tool that generates requirement-traceable pytest tests from requirements and source code.
+CodePilot (ReqLens) is a Python CLI tool that generates requirement-traceable pytest tests from requirements and source code.
 
 It provides:
 - A **5-stage pipeline** (requirements parse → code analysis → mapping → generation → critique).
