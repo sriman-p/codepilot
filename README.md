@@ -12,15 +12,15 @@ It provides:
 
 ```mermaid
 flowchart TD
-    U[User / CI] --> CLI["reqlens CLI<br/>generate, evaluate, experiment, report"]
-    CLI --> CFG["Config Loader<br/>configs/default.yaml"]
+    U[User / CI] --> CLI[reqlens CLI\n(generate | evaluate | experiment | report)]
+    CLI --> CFG[Config Loader\nconfigs/default.yaml]
 
     subgraph Pipeline[Generation Pipeline]
-        RP["1) Requirements Parser<br/>requirements_parser.py"]
-        CA["2) Code Analyzer<br/>code_analyzer.py"]
-        MP["3) Requirement-to-Code Mapper<br/>mapper.py"]
-        TG["4) Test Generator<br/>test_generator.py"]
-        CR["5) Critique and Revision<br/>critique.py"]
+        RP[1. Requirements Parser\nrequirements_parser.py]
+        CA[2. Code Analyzer\ncode_analyzer.py]
+        MP[3. Requirement↔Code Mapper\nmapper.py]
+        TG[4. Test Generator\ntest_generator.py]
+        CR[5. Critique & Revision\ncritique.py]
 
         RP --> MP
         CA --> MP
@@ -31,14 +31,14 @@ flowchart TD
     CLI --> RP
     CLI --> CA
 
-    TG --> PF["Provider Factory<br/>providers/__init__.py"]
+    TG --> PF[Provider Factory\nproviders/__init__.py]
     PF --> MOCK[Mock Provider]
     PF --> OA[OpenAI Provider]
     PF --> AN[Anthropic Provider]
 
-    CR --> ART["Artifacts<br/>test_generated.py<br/>traceability.csv<br/>gap_report.json<br/>generation_artifacts.json"]
+    CR --> ART[Artifacts\n- test_generated.py\n- traceability.csv\n- gap_report.json\n- generation_artifacts.json]
 
-    CLI --> EV["Evaluation<br/>coverage, correctness, traceability"]
+    CLI --> EV[Evaluation\n(requirement coverage,\ncorrectness, traceability)]
     EV --> REP[Experiment Report Summary]
 
     ART --> EV
