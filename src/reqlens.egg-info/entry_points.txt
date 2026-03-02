@@ -1,2 +1,0 @@
-[console_scripts]
-reqlens = reqlens.cli:app
